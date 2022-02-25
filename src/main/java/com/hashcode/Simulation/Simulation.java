@@ -96,7 +96,6 @@ public class Simulation {
                 for (int i = 0; i < project.contributorIDS.size(); i++) {
                     if (this.contributors.get(project.contributorIDS.get(i)).skills.get(skill) >= level) {
                         foundMentor = true;
-                        continue;
                     }
                 }
                 if (!foundMentor) {

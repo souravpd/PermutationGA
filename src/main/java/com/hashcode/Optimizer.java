@@ -1,5 +1,9 @@
 package com.hashcode;
 
+import java.util.*;
+
+import com.hashcode.Simulation.Project;
+import com.hashcode.Simulation.Contributor;
 import org.moeaframework.core.Problem;
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.variable.EncodingUtils;
@@ -54,6 +58,10 @@ class Optimizer implements Problem {
 
     @Override
     public void evaluate(Solution solution) {
+        int order[] = EncodingUtils.getPermutation(solution.getVariable(0));
+        int totalDurationOfSimulation = Solver.totalDurationOfSimulation;
+        ArrayList<Project> projects = new ArrayList<Project>();
+        HashMap<Integer, Contributor> contributors = new HashMap<Integer, Contributor>();
     }
 
     @Override
