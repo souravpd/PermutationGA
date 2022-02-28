@@ -83,52 +83,55 @@ public class Simulation {
      * 
      */
 
-    public boolean isValid(Project project) {
-        for (Requirement req : project.requirements) {
-            String skill = req.skill;
-            int level = req.level;
-            Contributor assignedContributor = this.contributors.get(req.assignedContributorID);
-            if (assignedContributor.skills.get(skill) >= req.level) {
-                continue;
-            } else if (assignedContributor.skills.get(skill) == req.level - 1) {
-                // Find if there exists someone who can mentor him
-                boolean foundMentor = false;
-                for (int i = 0; i < project.contributorIDS.size(); i++) {
-                    if (this.contributors.get(project.contributorIDS.get(i)).skills.get(skill) >= level) {
-                        foundMentor = true;
-                    }
-                }
-                if (!foundMentor) {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
+    // public boolean isValid(Project project) {
+    // for (Requirement req : project.requirements) {
+    // String skill = req.skill;
+    // int level = req.level;
+    // Contributor assignedContributor =
+    // this.contributors.get(req.assignedContributorID);
+    // if (assignedContributor.skills.get(skill) >= req.level) {
+    // continue;
+    // } else if (assignedContributor.skills.get(skill) == req.level - 1) {
+    // // Find if there exists someone who can mentor him
+    // boolean foundMentor = false;
+    // for (int i = 0; i < project.contributorIDS.size(); i++) {
+    // if (this.contributors.get(project.contributorIDS.get(i)).skills.get(skill) >=
+    // level) {
+    // foundMentor = true;
+    // }
+    // }
+    // if (!foundMentor) {
+    // return false;
+    // }
+    // } else {
+    // return false;
+    // }
+    // }
 
-        // Such an Assingment for the present project is valid
-        // Increase the skill levels by one
-        for (Requirement req : project.requirements) {
-            String skill = req.skill;
-            Contributor assignedContributor = this.contributors.get(req.assignedContributorID);
-            if (assignedContributor.skills.get(skill) >= req.level) {
-                continue;
-            } else if (assignedContributor.skills.get(skill) == req.level - 1) {
-                assignedContributor.skills.put(skill, assignedContributor.skills.get(skill) + 1);
-            }
-        }
+    // // Such an Assingment for the present project is valid
+    // // Increase the skill levels by one
+    // for (Requirement req : project.requirements) {
+    // String skill = req.skill;
+    // Contributor assignedContributor =
+    // this.contributors.get(req.assignedContributorID);
+    // if (assignedContributor.skills.get(skill) >= req.level) {
+    // continue;
+    // } else if (assignedContributor.skills.get(skill) == req.level - 1) {
+    // assignedContributor.skills.put(skill, assignedContributor.skills.get(skill) +
+    // 1);
+    // }
+    // }
 
-        return true;
-    }
+    // return true;
+    // }
 
     public double getFitness() {
         for (int i = 0; i < this.projects.size(); i++) {
             Project p = this.projects.get(i);
-
-            if (!isValid(p)) {
-                return Double.MIN_VALUE;
-            }
-            // Find the first spot where all contributor are free
+            // if (!isValid(p)) {
+            // return 0;
+            // }
+            // // Find the first spot where all contributor are free
             int timeOfAllFree = -1;
             for (int time = 0; time < this.totalDurationOfSimulation; time++) {
                 boolean areAllFree = true;
