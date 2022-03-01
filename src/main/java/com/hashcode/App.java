@@ -2,13 +2,17 @@ package com.hashcode;
 
 import java.io.*;
 
-import com.hashcode.GeneticAlgorithm.Utils;
+import com.hashcode.GeneticAlgorithm.GA;
 
 public class App {
     public static void main(String args[]) throws IOException {
-        String filePath = "src/main/java/com/hashcode/files/A.txt";
+        String filePath = "src/main/java/com/hashcode/files/B.txt";
         Solver.readInput(filePath);
         Solver.parseInput();
-        Utils.run();
+        GA ga = new GA(100);
+        ga.initialPopulation();
     }
 }
+/**
+ * 
+ */

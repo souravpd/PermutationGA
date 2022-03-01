@@ -28,5 +28,4 @@ public class Project {
         this.bestBefore = bestBefore;
         this.score = score;
     }
-
 }

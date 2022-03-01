@@ -3,13 +3,11 @@ package com.hashcode;
 import java.io.*;
 import java.util.*;
 
+import com.hashcode.GeneticAlgorithm.nextPermutation;
 import com.hashcode.Simulation.Contributor;
 import com.hashcode.Simulation.Project;
 import com.hashcode.Simulation.Requirement;
-
-import org.moeaframework.Executor;
-import org.moeaframework.core.NondominatedPopulation;
-import org.moeaframework.core.Solution;
+import com.hashcode.Simulation.Simulation;
 
 /**
  * //Input
@@ -103,17 +101,6 @@ public class Solver {
         arrayOfProjects = new int[Solver.numberOfProjects];
         for (int i = 0; i < numberOfProjects; i++) {
             arrayOfProjects[i] = i;
-        }
-    }
-
-    public static void runOptimizer() {
-        NondominatedPopulation results = new Executor()
-                .withProblemClass(Optimizer.class)
-                .withAlgorithm("NSGAII")
-                .withProperty("populationSize", 10000)
-                .run();
-        for (Solution solution : results) {
-            System.out.println(solution.getObjective(0));
         }
     }
 }
